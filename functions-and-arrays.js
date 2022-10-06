@@ -150,3 +150,21 @@ const matrix = [
   [24, 55, 58, 05, 66, 73, 99, 26, 97, 17],
   [21, 36, 23, 09, 75, 00, 76, 44, 20, 45],
 ];
+
+function maximumProduct(arr) {
+  ans = 0;
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr[i].length; j++) {
+      if (!(j + 3 > arr[i].length - 1)) {
+        let check = arr[i][j] * arr[i][j + 1] * arr[i][j + 2] * arr[i][j + 3];
+        if (check > ans) ans = check;
+      }
+      if (!(i + 3 > arr.length - 1)) {
+        let check = arr[i][j] * arr[i + 1][j] * arr[i + 2][j] * arr[i + 3][j];
+        if (check > ans) ans = check;
+      }
+    }
+  }
+  return ans;
+}
+console.log(maximumProduct(matrix));
